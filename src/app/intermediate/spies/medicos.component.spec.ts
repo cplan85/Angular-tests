@@ -1,6 +1,6 @@
 import { MedicosComponent } from './medicos.component';
 import { MedicosService } from './medicos.service';
-import { Observable, of, from, EMPTY} from 'rxjs';
+import { Observable, of, from, EMPTY, throwError} from 'rxjs';
 
 
 describe('MedicosComponent', () => {
@@ -51,6 +51,37 @@ describe('MedicosComponent', () => {
         expect(component.medicos.indexOf(medico)).toBeGreaterThanOrEqual(0);
         
     });
+
+    it ('If the adding fails, the message Error should be the same as', () => {
+
+        const myError = `Can't add a medico error message`;
+        const spy =  spyOn(service, 'agregarMedico').and.returnValue( throwError(myError));
+
+        component.agregarMedico();
+
+        expect(component.mensajeError).toBe(myError);
+        
+    })
+
+    it('should call the server to delete the medico', ()=> {
+
+        const spy = spyOn(service, 'borrarMedico').and.returnValue(EMPTY);
+        //this mimics when the user clicks confirm on the confirm prompt.
+        spyOn(window, 'confirm').and.returnValue(true);
+
+        component.borrarMedico('1');
+        expect(spy).toHaveBeenCalledWith('1');
+    })
+
     
+    it('should  not call the server to delete the medico', ()=> {
+
+        const spy = spyOn(service, 'borrarMedico').and.returnValue(EMPTY);
+        //this mimics when the user doesn't confirm on the website.
+        spyOn(window, 'confirm').and.returnValue(false);
+
+        component.borrarMedico('1');
+        expect(spy).not.toHaveBeenCalledWith('1');
+    })
 
 });

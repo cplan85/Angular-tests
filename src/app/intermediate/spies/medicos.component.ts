@@ -33,7 +33,7 @@ export class MedicosComponent implements OnInit {
   }
 
   borrarMedico(id: string) {
-    const confirmar = confirm('Estas seguro que desea borrar este médico');
+    const confirmar = confirm('Are you sure you want to delete this médico');
 
     if ( confirmar ) {
       this._medicoService.borrarMedico( id );
