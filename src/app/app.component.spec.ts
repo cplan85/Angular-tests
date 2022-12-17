@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { By } from '@angular/platform-browser';
+import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule.withRoutes([])
       ],
       declarations: [
         AppComponent
@@ -26,10 +28,38 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('tests');
   });
 
-  it('should render title', () => {
+  it('Should have a router-outlet', ()=> {
+
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('tests app is running!');
-  });
+    const debugElement = fixture.debugElement.query(By.directive( RouterOutlet));
+
+    expect( debugElement).not.toBeNull();
+  })
+
+  it('Should have a router-outlet', ()=> {
+
+    const fixture = TestBed.createComponent(AppComponent);
+    const debugElement = fixture.debugElement.query(By.directive( RouterOutlet));
+
+    expect( debugElement).not.toBeNull();
+  })
+
+  
+  it('Should have a link to the medics page', ()=> {
+
+    const fixture = TestBed.createComponent(AppComponent);
+    const elements = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref));
+
+    let exist = false;
+
+    for (const elem of elements) {
+      if (elem.attributes['routerLink'] === '/medicos') {
+        exist = true;
+        break;
+      }
+    }
+
+    expect( exist).toBeTruthy();
+  })
+
 });

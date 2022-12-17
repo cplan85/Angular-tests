@@ -1,3 +1,5 @@
+import { ROUTES } from './advanced/routes/app.routes';
+import { RouterModule } from '@angular/router';
 import { IncrementadorComponent } from './intermediate2/incrementor/incrementador.component';
 import { MedicosComponent } from './intermediate/spies/medicos.component';
 import { NgModule } from '@angular/core';
@@ -18,6 +20,7 @@ import { HospitalComponent } from './intermediate2/hospital/hospital.component';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(ROUTES),
     AppRoutingModule
   ],
   providers: [],
