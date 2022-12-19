@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MedicComponent } from './intermediate2/medic/medic.component';
 import { HospitalComponent } from './intermediate2/hospital/hospital.component';
+import { NavbarComponent } from './advanced/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HospitalComponent } from './intermediate2/hospital/hospital.component';
     MedicosComponent,
     MedicComponent,
     HospitalComponent,
-    IncrementadorComponent
+    IncrementadorComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
