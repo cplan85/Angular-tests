@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { MedicComponent } from './intermediate2/medic/medic.component';
 import { HospitalComponent } from './intermediate2/hospital/hospital.component';
 import { NavbarComponent } from './advanced/navbar/navbar.component';
+import { MedicRouterComponent } from './advanced/medic-router/medic-router.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavbarComponent } from './advanced/navbar/navbar.component';
     MedicComponent,
     HospitalComponent,
     IncrementadorComponent,
-    NavbarComponent
+    NavbarComponent,
+    MedicRouterComponent
   ],
   imports: [
     BrowserModule,
